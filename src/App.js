@@ -1,8 +1,8 @@
-import Context from './Context/Context';
+import { Router } from "./Router/Router";
 function App() {
   return (
     <div >
-      <Context/>
+      <Router/>
     </div>
   );
 }
