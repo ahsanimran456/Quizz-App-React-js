@@ -1,6 +1,9 @@
-import Home from "../Home/Home";
-import Login from "../Login/Login";
-import QuizzResult from "../QuizzResult/Result";
+// import Home from "../Home/Home";
+// import Login from "../Login/Login";
+import Login from '../Screens/Login'
+import Dashboard from '../Screens/Dashboard'
+import Quizz from '../Screens/Quizz'
+import QuizzResult from '../Screens/Results'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function Router() {
@@ -9,9 +12,9 @@ function Router() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"} element={<Login />} />
-                    <Route path={"/home"} element={<Home  />} />
-                    <Route path={"/quizz.Result"} element={<QuizzResult />} />
-
+                    <Route path={"/dashboard"} element={<Dashboard  />} />
+                    <Route path={"/quizz"} element={<Quizz />} />
+                    <Route path={"/Quizz.Result"} element={<QuizzResult />} />
                 </Routes>
             </BrowserRouter>
     );
