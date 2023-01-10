@@ -1,8 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.Login-main{
+
+.Login-main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +12,7 @@
     background-color: #343A40;
 }
 
-.login-box{
+.login-box {
     width: 400px;
     height: 400px;
     background-color: #fafafa;
@@ -22,6 +23,7 @@
     padding: 15px;
     border-radius: 10px;
 }
+
 .inputs-box {
     width: 100%;
     display: flex;
@@ -35,35 +37,313 @@
     text-align: center;
     margin-bottom: 20px;
 }
+
 .inputs-wrapper p {
     margin-bottom: 10px;
     text-align: start;
     margin-left: 50px;
     color: #6c757d;
 }
-.inputs-wrapper input,.inputs-wrapper button{
+
+.inputs-wrapper input,
+.inputs-wrapper button {
     width: 70%;
-    padding: 10px ;
+    padding: 10px;
     outline: none;
     border: none;
-    border-bottom: 1px solid #95A0F4 ;
+    border-bottom: 1px solid #95A0F4;
     background-color: transparent;
 
 }
-.btns{
+
+.btns {
     width: 100%;
     text-align: center;
 
 }
-.btns button{
+
+.btns button {
     width: 50%;
     padding: 10px;
     background-color: #95A0F4;
     outline: none;
-    border: 1px solid  #6971af;
+    border: 1px solid #6971af;
     border-radius: 7px;
-    color :#fff
+    color: #fff
 }
-.btns button:hover{
+
+.btns button:hover {
     cursor: pointer;
 }
+
+
+
+/* dashboard css ..................................../ */
+
+
+.dashboard-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.dashboard-wrapper .ant-layout {
+    height: 100%;
+    width: 15%;
+}
+
+.dashboard-wrapper .ant-layout-sider {
+    width: 100% !important;
+    flex: unset !important;
+    max-width: unset !important;
+    min-width: unset !important;
+}
+
+.main-center {
+    width: 100%;
+}
+
+.center-header {
+    padding: 9px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 88px;
+    background-color: #10266b !important;
+    box-shadow: 0 2px 6px 0 rgb(0 0 0 / 12%), inset 0 -1px 0 0 #dadce0;
+    color: #fff;
+}
+
+.center-header p {
+    margin: unset;
+    padding: unset;
+    font-weight: bold;
+}
+
+.center-header img {
+    width: 50px;
+    height: 50px;
+}
+
+.cards-container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-container .cards {
+    margin: 20px 30px;
+
+}
+
+
+/* quizz cs ..................................../ */
+
+.main-quizz-wrapper {
+    width: 100%;
+    height: 100vh;
+}
+
+.quizz-portion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f9eeee;
+    height: 86vh;
+}
+
+.container-quizz {
+    display: flex;
+    justify-content: center;
+}
+
+.quizz-wrapp {
+    width: 90%;
+    background-color: #fff;
+    margin-top: 30px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    padding: 20px 0;
+}
+
+.quizz-body {
+    padding: 5px 15px;
+}
+
+.quizz-header {
+    display: flex;
+    padding: 20px 15px;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.question {
+    display: flex;
+    align-items: center;
+}
+
+.question h3 {
+    color: #dc3545 !important;
+}
+
+.question p {
+    margin: unset;
+    font-weight: 600;
+    margin-left: 10px !important;
+    word-break: break-word;
+}
+
+.answers-btns {
+    margin-top: 41px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uper {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    flex-wrap: wrap;
+}
+
+.uper div {
+    margin-top: 10px;
+    display: flex;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.bottom div {
+    margin-top: 10px;
+    display: flex;
+}
+
+.button-80 {
+    background: #fff;
+    backface-visibility: hidden;
+    border-radius: .375rem;
+    border-style: solid;
+    border-width: .125rem;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Circular, Helvetica, sans-serif;
+    font-weight: 500;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+    padding: 7px 5px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transform: translateZ(0) scale(1);
+    transition: transform .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    background-color: #2a49a9fa !important;
+}
+
+.button-80:not(:disabled):hover {
+    transform: scale(1.05);
+}
+
+.button-80:not(:disabled):hover:active {
+    transform: scale(1.05) translateY(.125rem);
+}
+
+.button-80:focus {
+    /* outline: 0 solid transparent; */
+}
+
+.button-80:focus:before {
+    content: "";
+    left: calc(-1*.375rem);
+    pointer-events: none;
+    position: absolute;
+    top: calc(-1*.375rem);
+    transition: border-radius;
+    user-select: none;
+}
+
+.button-80:focus:not(:focus-visible) {
+    outline: 0 solid transparent;
+}
+
+.button-80:focus:not(:focus-visible):before {
+    border-width: 0;
+}
+
+.button-80:not(:disabled):active {
+    transform: translateY(.125rem);
+}
+
+.button-68 {
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #27ae60;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.button-68:hover {
+    background-color: #1e8449;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+}
+
+.button-68:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+}
+
+.button-68:hover {
+    box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 35px;
+}
+
+@media screen and(max-width:600px) {
+    .container-quizz{
+            padding: unset !important;
+    }
+}
+

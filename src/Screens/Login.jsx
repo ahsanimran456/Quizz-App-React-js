@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import './screen.css'
-import { getAuth, createUserWithEmailAndPassword, setDoc, doc, db } from '../FirebaseConfig/Firebase'
+import { getAuth, createUserWithEmailAndPassword, setDoc, doc, db ,onAuthStateChanged} from '../FirebaseConfig/Firebase'
 import { async } from "@firebase/util";
 import { BallTriangle } from 'react-loader-spinner'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 function Login() {
+    const navigate = useNavigate()
     const [login, Setlogin] = useState(true)
     const [UserName, SetuserName] = useState("")
     const [Email, SetEmail] = useState("")
@@ -20,7 +22,18 @@ function Login() {
         Setlogin(false)
     }
 
-    
+    useEffect(() => {
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("user", user);
+                navigate('/dashboard')
+            } else {
+                console.log("no user found");
+
+            }
+        });
+    }, [])
     const signUp = () => {
         const auth = getAuth();
         let usernametest = /^[A-Za-z .]{3,20}$/
