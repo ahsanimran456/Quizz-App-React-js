@@ -4,16 +4,19 @@ import { useState, useEffect, createContext } from 'react';
 import logo from '../Assest/Images/logo.png'
 import './screen.css'
 import { QuizzQuestins } from '../Questions/Questions';
-
-const Quizzdata = createContext()
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import {Inc} from '../States/Reducers/index'
 
 function Quizz() {
     const navigate = useNavigate()
     const [number, setnumber] = useState(0)
-    const [Score, setScore] = useState(0)
     const [nextbtn, Setnextbtn] = useState(true)
     const [answerdisable, setanswerdisable] = useState(false)
     const [questionnumber, setquestionnumber] = useState(1)
+    // redux 
+    const currnumber = useSelector((state)=> state.number)
+    const dispatch = useDispatch()
     const Next = () => {
         let btn1 = document.getElementById("btn1")
         let btn2 = document.getElementById("btn2")
@@ -41,8 +44,7 @@ function Quizz() {
         Setnextbtn(false)
         setanswerdisable(true)
         if (useranswer == QuizzQuestins[number].correct_answer) {
-            setScore(Score + 1)
-            console.log(Score)
+            dispatch(Inc())
         }
 
         if (useranswer == (QuizzQuestins[number].answers[0])) {
@@ -81,14 +83,14 @@ function Quizz() {
         });
     }, [])
     return (
-        <Quizzdata.Provider value={Score}>
+        
             <div className='main-quizz-wrapper'>
                 <div className="center-header">
                     <div>
                         <img src={logo} alt="" />
                     </div>
                     <div>
-                        <p>pakistan</p>
+                        <p>{currnumber}</p>
                     </div>
                 </div>
 
@@ -143,7 +145,6 @@ function Quizz() {
                     </div>
                 </div>
             </div>
-        </Quizzdata.Provider>
     );
 }
 
