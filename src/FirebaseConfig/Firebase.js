@@ -5,7 +5,9 @@ import {
      createUserWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut,
+    signInWithEmailAndPassword
 } from "firebase/auth";
 
 
@@ -47,4 +49,7 @@ export {getAuth,createUserWithEmailAndPassword,onAuthStateChanged ,
     onSnapshot,
     query,where,
      addDoc ,
-     orderBy}
+     orderBy,
+     signOut,
+     signInWithEmailAndPassword
+    }

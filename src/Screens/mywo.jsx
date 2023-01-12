@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './screen.css'
-import { getAuth, createUserWithEmailAndPassword, setDoc, doc, db, onAuthStateChanged } from '../FirebaseConfig/Firebase'
+import { getAuth, createUserWithEmailAndPassword, setDoc, doc, db, onAuthStateChanged,signInWithEmailAndPassword } from '../FirebaseConfig/Firebase'
 import { async } from "@firebase/util";
 import { BallTriangle } from 'react-loader-spinner'
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { Setname } from '../States/Reducers/index'
 
 
-function Login() {
+function Mywork() {
 
     const navigate = useNavigate()
     const [login, Setlogin] = useState(true)
@@ -28,6 +28,11 @@ function Login() {
     const GoSignup = () => {
         Setlogin(false)
     }
+    useEffect(()=>{
+        SetEmail("");
+        SetPassword("");
+        SetuserName("")
+    },[login])
 
     useEffect(() => {
         const auth = getAuth()
@@ -86,37 +91,84 @@ function Login() {
             toast.warning(`PASSWORD SHOULD BE AT LEAST 6 CHARACTERS!`, { autoClose: 2000, })
         }
     }
+
+    const LoginUser = () => {
+        const auth = getAuth();
+        let emailtest = /^([\w]*[\w\.]*(?!\.)@gmail.com)/
+        let passwordtest = /^[a-zA-Z0-9]{6,16}$/;
+        if ((emailtest.test(Email)) && (passwordtest.test(Password))) {
+            setloader(true)
+            signInWithEmailAndPassword(auth, Email,Password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    setloader(false)
+                    SetEmail(" ");
+                    SetPassword(" ");
+                    console.log(user)
+    
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setloader(false)
+                    toast.error(`${errorMessage} !`, { autoClose: 3000, })
+                    console.log("login error", errorMessage)
+                });
+        }
+        
+        else if (!emailtest.test(Email)) {
+            toast.warning(`PLEASE INPUT CORRECT Email !`, { autoClose: 2000, })
+        }
+        else if (!passwordtest.test(Password)) {
+            toast.warning(`PASSWORD SHOULD BE AT LEAST 6 CHARACTERS!`, { autoClose: 2000, })
+        }
+    }
     return (
+
+        // Login ....................................................>>>>>>
+
         <div className="Login-main">
             <ToastContainer />
             <div className="login-box">
-                {User ?
+                {login ?
                     <div className="inputs-box">
                         <div className="inputs-wrapper">
-                            {/* <p>User Email</p> */}
-                            <input type="text" placeholder="Email" />
+                            <input value={Email} type="text" placeholder="Email" onChange={(e) => SetEmail(e.target.value)} />
                         </div>
                         <div className="inputs-wrapper">
-                            {/* <p>Password</p> */}
-                            <input type="text" placeholder="Password" />
+                            <input value={Password} type="password" placeholder="Password" onChange={(e) => SetPassword(e.target.value)} />
                         </div>
+                        {loader ?
+                            <BallTriangle
+                                height={50}
+                                width={100}
+                                radius={5}
+                                color="#6971af"
+                                ariaLabel="ball-triangle-loading"
+                                wrapperClass={{}}
+                                wrapperStyle=""
+                                visible={true}
+                            />:
                         <div className="btns">
-                            <button onClick={GoSignup}>Login</button>
+                            <button onClick={LoginUser} >Login</button>
+                        </div>}
+                        <div className="an-account">
+                            <p style={{ cursor: 'pointer', marginTop: '20px' }}>
+                                Don't have an account? <span onClick={GoSignup} style={{ color: '#18B5F9' }}> Sign up </span>
+                            </p>
                         </div>
                     </div>
                     :
+                    // sign up ...................................///////////////////
 
                     <div className="inputs-box">
                         <div className="inputs-wrapper">
-                            {/* <p>UserName</p> */}
                             <input value={UserName} type="text" placeholder="Name" onChange={(e) => SetuserName(e.target.value)} />
                         </div>
                         <div className="inputs-wrapper">
-                            {/* <p>User Email</p> */}
                             <input value={Email} type="email" placeholder="Email" onChange={(e) => SetEmail(e.target.value)} />
                         </div>
                         <div className="inputs-wrapper">
-                            {/* <p>Password </p> */}
                             <input value={Password} type="password" placeholder="Password" onChange={(e) => SetPassword(e.target.value)} />
                         </div>
                         {loader ?
@@ -130,7 +182,12 @@ function Login() {
                                 wrapperStyle=""
                                 visible={true}
                             /> : <div className="btns">
-                                <button onClick={signUp}>Sign up </button>
+                                <button onClick={signUp}> Sign up </button>
+                                <div className="an-account">
+                                    <p style={{ cursor: 'pointer', marginTop: '20px' }}>
+                                        Have an account? <span style={{ color: '#18B5F9' }} onClick={Gologin}>  Log in</span>
+                                    </p>
+                                </div>
                             </div>
                         }
 
@@ -142,4 +199,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Mywork;

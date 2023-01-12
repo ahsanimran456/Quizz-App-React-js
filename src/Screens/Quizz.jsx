@@ -12,6 +12,7 @@ function Quizz() {
     const navigate = useNavigate()
     const [number, setnumber] = useState(0)
     const [nextbtn, Setnextbtn] = useState(true)
+    const [score ,setScore] =useState(0)
     const [answerdisable, setanswerdisable] = useState(false)
     const [questionnumber, setquestionnumber] = useState(1)
     // redux 
@@ -34,6 +35,7 @@ function Quizz() {
     }
     const Result = () => {
         navigate('/Quizz.Result')
+        localStorage.setItem("Score",score)
     }
 
     const CheckQuestion = (useranswer) => {
@@ -45,6 +47,7 @@ function Quizz() {
         setanswerdisable(true)
         if (useranswer == QuizzQuestins[number].correct_answer) {
             dispatch(Inc())
+            setScore(score +1 )
         }
 
         if (useranswer == (QuizzQuestins[number].answers[0])) {
@@ -90,7 +93,7 @@ function Quizz() {
                         <img src={logo} alt="" />
                     </div>
                     <div>
-                        <p>{currnumber}</p>
+                        <p className='text-uppercase'>{localStorage.getItem('UserName')}</p>
                     </div>
                 </div>
 
