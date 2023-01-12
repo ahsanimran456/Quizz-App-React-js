@@ -1,16 +1,13 @@
-# Getting Started with Create React App
 
-Live link : quizzapp-ahsan.netlify.app
 
-## Available Scripts
 
-In the project directory, you can run:
+
 
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+Live link : [http://quizzapp-ahsan.netlify.app] to view it in your browser
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
